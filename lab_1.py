@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 
-def sequence_iterator(data_file):
+
+def sequence_iterator(data_file): # This function is intended to take the path of the data file as an argument when called
 
     with open(data_file, "r") as file:
-        file = file.read()
+        file = file.read() # Opens and reads the file content, storing it as a string inside the file variable
     
-    file = file.lower().strip().split(">seq")
-    file = [x for x in file if x]
+    file = file.lower().strip().split(">seq") # "Cleans" the data and splits each sequence into separate elements into a list
+    file = [x for x in file if x] # Removes falsy values, i.e empty elements  
 
     index_counter = 0
 
