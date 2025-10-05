@@ -1,33 +1,33 @@
 import matplotlib.pyplot as plt
 
 
-def sequence_iterator(data_file): # This function is intended to take the path of the data file as an argument when called
+def nucleobase_count(data_file): 
+    """ The purpose of this function is to count the occurences of nucleobases in one or more sequences of DNA. It is intended to 
+    take the path of a text file as an argument when called, but the contained data need to be formatted in the same way as the 
+    data in the sample files, with each sequence separated by '>seq'. Mandates an import of matplotlib.pyplot as plt."""
+
+    index_counter = 0  # Value placer used to refer to individual elements in list, first [0] to last 
 
     with open(data_file, "r") as file:
-        file = file.read() # Opens and reads the file content, storing it as a string inside the file variable
-    
-    file = file.lower().strip().split(">seq") # "Cleans" the data and splits each sequence into separate elements into a list
-    file = [x for x in file if x] # Removes falsy values, i.e empty elements  
+        read_file = file.read() 
 
-    index_counter = 0
-
-    for x in range(len(file)):
-
+    sequence_list = read_file.lower().strip().split(">seq") # Cleans string data, splits each sequence into list elements
+    sequence_list = [sequence for sequence in sequence_list if sequence] # Removes falsy values, i.e empty list elements
+                 
+    for list_iterator in range(len(sequence_list)): # Iterates as many times as list contains elements
         empty_dictionary = {"a" : 0, "t" : 0, "c" : 0, "g" : 0}
-        sequence = file[index_counter]
-
-        for x in sequence:
-            if x == "a":
+        sequence = sequence_list[index_counter]
+        for nucleobase in sequence: # Nested loop, iterates through a single list element
+            if nucleobase == "a": # Conditions which will update dict values based on nucleobase
                 empty_dictionary["a"] += 1
-            elif x == "t":
+            elif nucleobase == "t":
                 empty_dictionary["t"] += 1
-            elif x == "c":
+            elif nucleobase == "c":
                 empty_dictionary["c"] += 1
-            elif x == "g":
+            elif nucleobase == "g":
                 empty_dictionary["g"] += 1
             else:
                 continue
-
         letters = list(empty_dictionary.keys())
         frequency = list(empty_dictionary.values())
         plt.bar(range(len(empty_dictionary)), frequency, tick_label=letters)
@@ -37,5 +37,4 @@ def sequence_iterator(data_file): # This function is intended to take the path o
         plt.show()
         index_counter = index_counter + 1
 
-
-sequence_iterator(r"C:\Users\kalle\Documents\Github\lab_1_karl_rydberg_de25\data\dna_raw_complicated.txt")
+nucleobase_count(r"C:\Users\kalle\Documents\Github\lab_1_karl_rydberg_de25\data\dna_raw.txt")
