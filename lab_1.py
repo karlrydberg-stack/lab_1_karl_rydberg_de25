@@ -28,13 +28,11 @@ def nucleobase_count(data_file):
             else:
                 continue
         
-        """ The following block graphs and showcases the data for each sequence contained. Loosely based on concepts found 
-        here: https://www.tutorialspoint.com/plot-a-bar-using-matplotlib-using-a-dictionary """
         letters = list(empty_dictionary.keys()) # Creates list variable with dict keys as elements
         frequency = list(empty_dictionary.values()) # Creates list variable with dict values as elements
-        plt.bar(range(len(empty_dictionary)), 
+        plt.bar(range(len(empty_dictionary)), # Graph parameter, 
                 frequency, 
-                tick_label=letters)
+                tick_label=letters) 
         
         plt.title(f"Sequence: {index_counter + 1}")
         plt.xlabel("Nucleobases")
