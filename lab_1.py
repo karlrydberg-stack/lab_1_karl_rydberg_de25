@@ -30,14 +30,13 @@ def nucleobase_count(data_file):
         
         letters = list(empty_dictionary.keys()) # Creates list variable with dict keys as elements
         frequency = list(empty_dictionary.values()) # Creates list variable with dict values as elements
-        plt.bar(range(len(empty_dictionary)), # Graph parameter, 
+        plt.bar(range(len(empty_dictionary)), # Initiates bar graph using "plt.bar" along with necessary parameters 
                 frequency, 
                 tick_label=letters) 
-        
         plt.title(f"Sequence: {index_counter + 1}")
         plt.xlabel("Nucleobases")
         plt.ylabel("Occurences")
         plt.show()
-        index_counter = index_counter + 1 # Changes the value of index_counter and thusly the referred list element
+        index_counter = index_counter + 1 # Changes the value of index_counter and thusly the referred sequence
 
-nucleobase_count(r"")
+nucleobase_count("dna_raw_complicated.txt") # Copy path of data file
