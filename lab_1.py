@@ -38,5 +38,3 @@ def nucleobase_count(data_file):
         plt.ylabel("Occurences")
         plt.show()
         index_counter = index_counter + 1 # Changes the value of index_counter and thusly the referred sequence
-
-nucleobase_count("dna_raw.txt")
