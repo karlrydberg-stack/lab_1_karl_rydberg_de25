@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def nucleobase_count(data_file): 
     """ The purpose of this function is to count the occurences of nucleobases in one or more sequences of DNA. It is intended to 
     take the path of a text file as an argument when called, but the contained data need to be formatted in the same way as the 
@@ -35,4 +37,6 @@ def nucleobase_count(data_file):
         plt.close()
         index_counter = index_counter + 1 # Changes the value of index_counter and thusly the referred sequence
 
-nucleobase_count("dna_raw.txt")
+path_to_file = Path(__file__).parent / "dna_raw_complicated.txt"
+
+nucleobase_count(path_to_file)
